@@ -89,6 +89,16 @@ func handleMessage(logger *log.Logger, writer io.Writer, state analysis.State, m
         // prepare resposne
         response := state.Hover(request.ID, request.Params.TextDocument.Uri)       // write it back to the stream
         writeResponse(logger, response, writer)
+
+    case "textDocument/definition":
+        var request lsp.DefinitionRequest
+        if err := json.Unmarshal(content, &request) ; err != nil {
+            logger.Printf("[textdoc/defnition] received contents cannot be parsed : %s %s", content,  err)
+        }
+        logger.Printf("[textdoc/definition] DEFINITION loaded file at: [ %s ]", request.Params.TextDocument.Uri)
+        // prepare resposne
+        response := state.Definition(request.ID, request.Params.TextDocument.Uri, request.Params.Position)       // write it back to the stream
+        writeResponse(logger, response, writer)
     }
 }
 
