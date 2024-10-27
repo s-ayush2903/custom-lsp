@@ -17,7 +17,7 @@ func EncodeMessage(msg any) string {
 }
 
 type BaseMessage struct {
-    Message string `json:"Method"`
+    Method string `json:"Method"`
 }
 
 // currently returns the content length along with error (if applicable)
@@ -43,7 +43,7 @@ func DecodeMessage(msg []byte) (string, []byte, error) {
         panic(derr)
     }
 
-    return message.Message, content, nil;
+    return message.Method, content, nil;
 }
 
 // type SplitFunc func(data []byte, atEOF bool) (advance int, token []byte, err error)

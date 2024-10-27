@@ -1,8 +1,20 @@
-[custom-lsp]2024/10/27 18:28:07 main.go:12: logger initiated bruv..
-[custom-lsp]2024/10/27 18:28:07 main.go:14: hiii
-[custom-lsp]2024/10/27 18:28:07 main.go:19: attaching splitter
-[custom-lsp]2024/10/27 18:28:07 main.go:21: attached splitter
-[custom-lsp]2024/10/27 18:28:07 main.go:23: gonna parse the buffer now...
-[custom-lsp]2024/10/27 18:28:07 main.go:33: Content-Length: 3085
+[custom-lsp]2024/10/28 01:16:24 main.go:14: logger initiated bruv..
+[custom-lsp]2024/10/28 01:16:24 main.go:16: hiii
+[custom-lsp]2024/10/28 01:16:24 main.go:23: attached splitter
+[custom-lsp]2024/10/28 01:16:24 main.go:25: parsing buffer... 1
+[custom-lsp]2024/10/28 01:16:24 main.go:43: Received message with method initialize
+[custom-lsp]2024/10/28 01:16:24 main.go:51: Connected to client Neovim with version 0.9.5
+[custom-lsp]2024/10/28 01:16:24 main.go:59: responded back to client with Content-Length: 135
 
-{"method":"initialize","params":{"clientInfo":{"name":"Neovim","version":"0.9.5"},"trace":"off","capabilities":{"textDocument":{"implementation":{"linkSupport":true},"typeDefinition":{"linkSupport":true},"callHierarchy":{"dynamicRegistration":false},"signatureHelp":{"dynamicRegistration":false,"signatureInformation":{"documentationFormat":["markdown","plaintext"],"activeParameterSupport":true,"parameterInformation":{"labelOffsetSupport":true}}},"publishDiagnostics":{"tagSupport":{"valueSet":[1,2]},"relatedInformation":true},"rename":{"dynamicRegistration":false,"prepareSupport":true},"completion":{"contextSupport":false,"completionItemKind":{"valueSet":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25]},"dynamicRegistration":false,"completionItem":{"snippetSupport":false,"commitCharactersSupport":false,"preselectSupport":false,"deprecatedSupport":false,"documentationFormat":["markdown","plaintext"]}},"hover":{"dynamicRegistration":false,"contentFormat":["markdown","plaintext"]},"references":{"dynamicRegistration":false},"documentHighlight":{"dynamicRegistration":false},"documentSymbol":{"hierarchicalDocumentSymbolSupport":true,"dynamicRegistration":false,"symbolKind":{"valueSet":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26]}},"codeAction":{"codeActionLiteralSupport":{"codeActionKind":{"valueSet":["","quickfix","refactor","refactor.extract","refactor.inline","refactor.rewrite","source","source.organizeImports"]}},"isPreferredSupport":true,"dataSupport":true,"resolveSupport":{"properties":["edit"]},"dynamicRegistration":false},"semanticTokens":{"formats":["relative"],"requests":{"full":{"delta":true},"range":false},"overlappingTokenSupport":true,"multilineTokenSupport":false,"serverCancelSupport":false,"augmentsSyntaxTokens":true,"tokenModifiers":["declaration","definition","readonly","static","deprecated","abstract","async","modification","documentation","defaultLibrary"],"dynamicRegistration":false,"tokenTypes":["namespace","type","class","enum","interface","struct","typeParameter","parameter","variable","property","enumMember","event","function","method","macro","keyword","modifier","comment","string","number","regexp","operator","decorator"]},"synchronization":{"willSaveWaitUntil":true,"didSave":true,"dynamicRegistration":false,"willSave":true},"declaration":{"linkSupport":true},"definition":{"linkSupport":true}},"window":{"workDoneProgress":true,"showMessage":{"messageActionItem":{"additionalPropertiesSupport":false}},"showDocument":{"support":true}},"workspace":{"symbol":{"hierarchicalWorkspaceSymbolSupport":true,"dynamicRegistration":false,"symbolKind":{"valueSet":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26]}},"didChangeWatchedFiles":{"dynamicRegistration":false,"relativePatternSupport":true},"semanticTokens":{"refreshSupport":true},"configuration":true,"applyEdit":true,"workspaceEdit":{"resourceOperations":["rename","create","delete"]},"workspaceFolders":true}},"rootPath":null,"rootUri":null,"workspaceFolders":null,"processId":75074},"id":1,"jsonrpc":"2.0"}
+{"jsonrpc":"2.0","id":1,"result":{"capabilities":{"textDocumentSync":1},"serverInfo":{"name":"custom-lsp","version":"0.0.0.0.beta-1"}}}
+[custom-lsp]2024/10/28 01:16:24 main.go:34: [progress] Buffer parsed for [1]th time
+[custom-lsp]2024/10/28 01:16:24 main.go:25: parsing buffer... 2
+[custom-lsp]2024/10/28 01:16:24 main.go:43: Received message with method initialized
+[custom-lsp]2024/10/28 01:16:24 main.go:34: [progress] Buffer parsed for [2]th time
+[custom-lsp]2024/10/28 01:18:11 main.go:25: parsing buffer... 3
+[custom-lsp]2024/10/28 01:18:11 main.go:43: Received message with method shutdown
+[custom-lsp]2024/10/28 01:18:11 main.go:34: [progress] Buffer parsed for [3]th time
+[custom-lsp]2024/10/28 01:18:11 main.go:37: finished scanning
+s: { this is a ~~sample~~ readme, **can** you see it _really_?
+ }
+[custom-lsp]2024/10/28 01:16:24 main.go:34: [progress] Buffer parsed for [3]th time
