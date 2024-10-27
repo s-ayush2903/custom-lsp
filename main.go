@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"encoding/json"
+	"io"
 	"log"
 	"lsp-go/analysis"
 	"lsp-go/lsp"
@@ -33,7 +34,10 @@ func main() {
             logger.Printf("An error occurred %s", err)
         }
 
-        handleMessage(logger, state, method, content);
+        // I previously erroneously used stderr as writing stream and hence wasn't able to receive further responses from the client
+        writer := os.Stdout 
+
+        handleMessage(logger, writer, state, method, content);
         logger.Printf("[progress] Buffer parsed for [%d]th time", idx)
         idx += 1
     }
@@ -42,7 +46,7 @@ func main() {
 
 // handle the message received from client
 // UNIMPLEMENTED yet
-func handleMessage(logger *log.Logger, state analysis.State, method string, content []byte) {
+func handleMessage(logger *log.Logger, writer io.Writer, state analysis.State, method string, content []byte) {
     logger.Printf("Received message with method %s", method)
 
     switch method {
@@ -54,12 +58,8 @@ func handleMessage(logger *log.Logger, state analysis.State, method string, cont
         logger.Printf("[INITIALIZE] Connected to client %s with version %s", request.InitializeRequestParams.ClientInfo.Name, request.InitializeRequestParams.ClientInfo.Version)
 
         response := lsp.NewInitializeResponse(request.ID)
-        encodedResponse := rpc.EncodeMessage(response);
 
-        // I previously erroneously used stderr as writing stream and hence wasn't able to receive further responses from the client
-        writer := os.Stdout 
-        writer.Write([]byte(encodedResponse))
-        logger.Printf("responded back to client with %s", encodedResponse)
+        writeResponse(logger, response, writer)
 
     case "textDocument/didOpen":
         var request lsp.DidOpenTextDocumentNotification
@@ -79,7 +79,32 @@ func handleMessage(logger *log.Logger, state analysis.State, method string, cont
         for _, change := range request.Params.Changes {
             state.UpdateDocument(request.Params.TextDocument.Uri, change.Text)
         }
+
+    case "textDocument/hover":
+        var request lsp.HoverRequest
+        if err := json.Unmarshal(content, &request) ; err != nil {
+            logger.Printf("[textdoc/hover] received contents cannot be parsed : %s %s", content,  err)
+        }
+        logger.Printf("[textdoc/hover] HOVER loaded file at: [ %s ]", request.Params.TextDocument.Uri)
+        // prepare resposne
+        response := lsp.HoverResponse{
+            Response: lsp.Response{
+                RPC: "2.0",
+                ID: &request.ID,
+            },
+            Result: lsp.HoverResult{
+                Contents: "Hello from custom-lsp!",
+            },
+        }
+        // write it back to the stream
+        writeResponse(logger, response, writer)
     }
+}
+
+func writeResponse(logger *log.Logger, response any, writer io.Writer) {
+        encodedResponse := rpc.EncodeMessage(response);
+        writer.Write([]byte(encodedResponse))
+        logger.Printf("responded back to client with %s", encodedResponse)
 }
 
 // create a file to write logs to and return it
