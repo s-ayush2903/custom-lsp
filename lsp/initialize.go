@@ -29,6 +29,8 @@ type InitializeResult struct {
 
 // https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#serverCapabilities
 type ServerCapabilities struct {
+    // will be using FULL as the default one
+    // check the spec linked below
     TextDocumentSyncKind int `json:"textDocumentSync"`
 }
 
@@ -45,7 +47,7 @@ func NewInitializeResponse(id int) InitializeResponse {
         },
         Result: InitializeResult{
             Capabilities: ServerCapabilities{
-                TextDocumentSyncKind: 1,
+                TextDocumentSyncKind: 1, // https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocumentSyncKind
             },
             ServerInfo: ServerInfo{
                 Name: "custom-lsp",

@@ -1,20 +1,38 @@
-[custom-lsp]2024/10/28 01:16:24 main.go:14: logger initiated bruv..
-[custom-lsp]2024/10/28 01:16:24 main.go:16: hiii
-[custom-lsp]2024/10/28 01:16:24 main.go:23: attached splitter
-[custom-lsp]2024/10/28 01:16:24 main.go:25: parsing buffer... 1
-[custom-lsp]2024/10/28 01:16:24 main.go:43: Received message with method initialize
-[custom-lsp]2024/10/28 01:16:24 main.go:51: Connected to client Neovim with version 0.9.5
-[custom-lsp]2024/10/28 01:16:24 main.go:59: responded back to client with Content-Length: 135
+[custom-lsp]2024/10/28 02:42:48 main.go:15: logger initiated bruv..
+[custom-lsp]2024/10/28 02:42:48 main.go:17: hiii
+[custom-lsp]2024/10/28 02:42:48 main.go:26: attached splitter
+[custom-lsp]2024/10/28 02:42:48 main.go:28: parsing buffer... 1
+[custom-lsp]2024/10/28 02:42:48 main.go:46: Received message with method initialize
+[custom-lsp]2024/10/28 02:42:48 main.go:54: [INITIALIZE] Connected to client Neovim with version 0.9.5
+[custom-lsp]2024/10/28 02:42:48 main.go:62: responded back to client with Content-Length: 135
 
 {"jsonrpc":"2.0","id":1,"result":{"capabilities":{"textDocumentSync":1},"serverInfo":{"name":"custom-lsp","version":"0.0.0.0.beta-1"}}}
-[custom-lsp]2024/10/28 01:16:24 main.go:34: [progress] Buffer parsed for [1]th time
-[custom-lsp]2024/10/28 01:16:24 main.go:25: parsing buffer... 2
-[custom-lsp]2024/10/28 01:16:24 main.go:43: Received message with method initialized
-[custom-lsp]2024/10/28 01:16:24 main.go:34: [progress] Buffer parsed for [2]th time
-[custom-lsp]2024/10/28 01:18:11 main.go:25: parsing buffer... 3
-[custom-lsp]2024/10/28 01:18:11 main.go:43: Received message with method shutdown
-[custom-lsp]2024/10/28 01:18:11 main.go:34: [progress] Buffer parsed for [3]th time
-[custom-lsp]2024/10/28 01:18:11 main.go:37: finished scanning
-s: { this is a ~~sample~~ readme, **can** you see it _really_?
- }
-[custom-lsp]2024/10/28 01:16:24 main.go:34: [progress] Buffer parsed for [3]th time
+[custom-lsp]2024/10/28 02:42:48 main.go:37: [progress] Buffer parsed for [1]th time
+[custom-lsp]2024/10/28 02:42:48 main.go:28: parsing buffer... 2
+[custom-lsp]2024/10/28 02:42:48 main.go:46: Received message with method initialized
+[custom-lsp]2024/10/28 02:42:48 main.go:37: [progress] Buffer parsed fo[custom-lsp]2024/10/28 02:44:37 main.go:28: parsing buffer... 3
+[custom-lsp]2024/10/28 02:44:37 main.go:46: Received message with method shutdown
+[custom-lsp]2024/10/28 02:44:37 main.go:37: [progress] Buffer parsed for [3]th time
+[custom-lsp]2024/10/28 02:44:37 main.go:40: finished scanning
+lsp-go/readme.md ]
+[custom-lsp]2024/10/28 02:42:48 main.go:37: [progress] Buffer parsed for [3]th time
+[custom-lsp]2024/10/28 02:42:50 main.go:28: parsing buffer... 4
+[custom-lsp]2024/10/28 02:42:50 main.go:46: Received message with method textDocument/didChange
+[custom-lsp]2024/10/28 02:42:50 main.go:77: [textdoc/didChange] UPDATED loaded file at: [ file:///Users/ayush/Desktop/learn/lsp-go/readme.md ]
+[custom-lsp]2024/10/28 02:42:50 main.go:37: [progress] Buffer parsed for [4]th time
+[custom-lsp]2024/10/28 02:42:50 main.go:28: parsing buffer... 5
+[custom-lsp]2024/10/28 02:42:50 main.go:46: Received message with method textDocument/didChange
+[custom-lsp]2024/10/28 02:42:50 main.go:77: [textdoc/didChange] UPDATED loaded file at: [ file:///Users/ayush/Desktop/learn/lsp-go/readme.md ]
+[custom-lsp]2024/10/28 02:42:50 main.go:37: [progress] Buffer parsed for [5]th time
+[custom-lsp]2024/10/28 02:42:50 main.go:28: parsing buffer... 6
+[custom-lsp]2024/10/28 02:42:50 main.go:46: Received message with method textDocument/didChange
+[custom-lsp]2024/10/28 02:42:50 main.go:77: [textdoc/didChange] UPDATED loaded file at: [ file:///Users/ayush/Desktop/learn/lsp-go/readme.md ]
+[custom-lsp]2024/10/28 02:42:50 main.go:37: [progress] Buffer parsed for [6]th time
+[custom-lsp]2024/10/28 02:42:50 main.go:28: parsing buffer... 7
+[custom-lsp]2024/10/28 02:42:50 main.go:46: Received message with method textDocument/didChange
+[custom-lsp]2024/10/28 02:42:50 main.go:77: [textdoc/didChange] UPDATED loaded file at: [ file:///Users/ayush/Desktop/learn/lsp-go/readme.md ]
+[custom-lsp]2024/10/28 02:42:50 main.go:37: [progress] Buffer parsed for [7]th time
+[custom-lsp]2024/10/28 02:42:51 main.go:28: parsing buffer... 8
+[custom-lsp]2024/10/28 02:42:51 main.go:46: Received message with method textDocument/didChange
+[custom-lsp]2024/10/28 02:42:51 main.go:77: [textdoc/didChange] UPDATED loaded file at: [ file:///Users/ayush/Desktop/learn/lsp-go/readme.md ]
+[custom-lsp]2024/10/28 02:42:51 main.go:37: [progress] Buffer parsed for [8]th time
