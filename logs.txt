@@ -1,33 +1,17 @@
-[custom-lsp]2024/10/28 03:14:39 main.go:16: logger initiated bruv..
-[custom-lsp]2024/10/28 03:14:39 main.go:18: hiii
-[custom-lsp]2024/10/28 03:14:39 main.go:27: attached splitter
-[custom-lsp]2024/10/28 03:14:39 main.go:29: parsing buffer... 1
-[custom-lsp]2024/10/28 03:14:39 main.go:50: Received message with method initialize
-[custom-lsp]2024/10/28 03:14:39 main.go:58: [INITIALIZE] Connected to client Neovim with version 0.9.5
-[custom-lsp]2024/10/28 03:14:39 main.go:107: responded back to client with Content-Length: 156
+[custom-lsp]2024/10/28 03:28:16 main.go:16: logger initiated bruv..
+[custom-lsp]2024/10/28 03:28:16 main.go:18: hiii
+[custom-lsp]2024/10/28 03:28:16 main.go:27: attached splitter
+[custom-lsp]2024/10/28 03:28:16 main.go:29: parsing buffer... 1
+[custom-lsp]2024/10/28 03:28:16 main.go:50: Received message with method initialize
+[custom-lsp]2024/10/28 03:28:16 main.go:58: [INITIALIZE] Connected to client Neovim with version 0.9.5
+[custom-lsp]2024/10/28 03:28:16 main.go:98: responded back to client with Content-Length: 156
 
 {"jsonrpc":"2.0","id":1,"result":{"capabilities":{"textDocumentSync":1,"hoverProvider":true},"serverInfo":{"name":"custom-lsp","version":"0.0.0.0.beta-1"}}}
-[custom-lsp]2024/10/28 03:14:39 main.go:41: [progress] Buffer parsed for [1]th time
-[custom-lsp]2024/10/28 03:14:40 main.go:29: parsing buffer... 2
-[custom-lsp]2024/10/28 03:14:40 main.go:50: Received message with method initialized
-[custom-lsp]2024/10/28 03:14:40 main.go:41: [progress] Buffer parsed for [2]th time
-[custom-lsp]2024/10/28 03:14:40 main.go:29: parsing buffer... 3
-[custom-lsp]2024/10/28 03:14:40 main.go:50: Received message with method textDocument/didOpen
-[custom-lsp]2024/10/28 03:14:40 main.go:69: [textdoc/didOpen] OPENED loaded file at: [ file:///Users/ayush/Desktop/learn/lsp-go/readme.md ]
-[custom-lsp]2024/10/28 03:14:40 main.go:41: [progress] Buffer [custom-lsp]2024/10/28 03:15:08 main.go:28: parsing buffer... 4
-[custom-lsp]2024/10/28 03:15:08 main.go:46: Received message with method shutdown
-[custom-lsp]2024/10/28 03:15:08 main.go:37: [progress] Buffer parsed for [4]th time
-[custom-lsp]2024/10/28 03:15:08 main.go:40: finished scanning
-Desktop/learn/lsp-go/readme.md ]
-[custom-lsp]2024/10/28 03:14:41 main.go:41: [progress] Buffer parsed for [4]th time
-[custom-lsp]2024/10/28 03:14:42 main.go:29: parsing buffer... 5
-[custom-lsp]2024/10/28 03:14:42 main.go:50: Received message with method textDocument/didChange
-[custom-lsp]2024/10/28 03:14:42 main.go:77: [textdoc/didChange] UPDATED loaded file at: [ file:///Users/ayush/Desktop/learn/lsp-go/readme.md ]
-[custom-lsp]2024/10/28 03:14:42 main.go:41: [progress] Buffer parsed for [5]th time
-[custom-lsp]2024/10/28 03:14:43 main.go:29: parsing buffer... 6
-[custom-lsp]2024/10/28 03:14:43 main.go:50: Received message with method textDocument/hover
-[custom-lsp]2024/10/28 03:14:43 main.go:88: [textdoc/hover] HOVER loaded file at: [ file:///Users/ayush/Desktop/learn/lsp-go/readme.md ]
-[custom-lsp]2024/10/28 03:14:43 main.go:107: responded back to client with Content-Length: 71
-
-{"jsonrpc":"2.0","id":2,"result":{"contents":"Hello from custom-lsp!"}}
-[custom-lsp]2024/10/28 03:14:43 main.go:41: [progress] Buffer parsed for [6]th time
+[custom-lsp]2024/10/28 03:28:16 main.go:41: [progress] Buffer parsed for [1]th time
+[custom-lsp]2024/10/28 03:28:17 main.go:29: parsing buffer... 2
+[custom-lsp]2024/10/28 03:28:17 main.go:50: Received message with method initialized
+[custom-lsp]2024/10/28 03:28:17 main.go:41: [progress] Buffer parsed for [2]th time
+[custom-lsp]2024/10/28 03:28:21 main.go:29: parsing buffer... 3
+[custom-lsp]2024/10/28 03:28:21 main.go:50: Received message with method shutdown
+[custom-lsp]2024/10/28 03:28:21 main.go:41: [progress] Buffer parsed for [3]th time
+[custom-lsp]2024/10/28 03:28:21 main.go:44: finished scanning

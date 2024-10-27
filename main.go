@@ -87,16 +87,7 @@ func handleMessage(logger *log.Logger, writer io.Writer, state analysis.State, m
         }
         logger.Printf("[textdoc/hover] HOVER loaded file at: [ %s ]", request.Params.TextDocument.Uri)
         // prepare resposne
-        response := lsp.HoverResponse{
-            Response: lsp.Response{
-                RPC: "2.0",
-                ID: &request.ID,
-            },
-            Result: lsp.HoverResult{
-                Contents: "Hello from custom-lsp!",
-            },
-        }
-        // write it back to the stream
+        response := state.Hover(request.ID, request.Params.TextDocument.Uri)       // write it back to the stream
         writeResponse(logger, response, writer)
     }
 }
