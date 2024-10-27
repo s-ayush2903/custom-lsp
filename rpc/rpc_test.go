@@ -12,7 +12,7 @@ type ArbitStruct struct {
 }
 
 func TestEncoderTest(t *testing.T) {
-    expected := "Content-Length 67\r\n\r\n{\"ArbitVariable\":true,\"AnotherVariable\":\"hello\",\"ThirdVariable\":12}";
+    expected := "Content-Length: 67\r\n\r\n{\"ArbitVariable\":true,\"AnotherVariable\":\"hello\",\"ThirdVariable\":12}";
     observed := rpc.EncodeMessage(ArbitStruct{true, "hello", 12});
 
     if (expected != observed) {
@@ -21,7 +21,7 @@ func TestEncoderTest(t *testing.T) {
 }
 
 func TestDecode(t *testing.T) {
-    msg := "Content-Length 15\r\n\r\n{\"Method\":\"hi\"}"
+    msg := "Content-Length: 15\r\n\r\n{\"Method\":\"hi\"}"
     message, content, err := rpc.DecodeMessage([]byte(msg));
     observed := len(content)
     expected := 15

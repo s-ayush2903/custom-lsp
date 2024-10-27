@@ -13,7 +13,7 @@ func EncodeMessage(msg any) string {
     if (err != nil) {
         panic(err)
     }
-    return fmt.Sprintf("Content-Length %d\r\n\r\n%s", len(content), content)
+    return fmt.Sprintf("Content-Length: %d\r\n\r\n%s", len(content), content)
 }
 
 type BaseMessage struct {
@@ -29,7 +29,7 @@ func DecodeMessage(msg []byte) (string, []byte, error) {
     }
 
     _ = content
-    contentLengthBytes := header[len("Content-Length "):]
+    contentLengthBytes := header[len("Content-Length: "):]
     contentLength, err := strconv.Atoi(string(contentLengthBytes));
 
     if (err != nil) {
@@ -44,4 +44,28 @@ func DecodeMessage(msg []byte) (string, []byte, error) {
     }
 
     return message.Message, content, nil;
+}
+
+// type SplitFunc func(data []byte, atEOF bool) (advance int, token []byte, err error)
+func Split(data []byte, _ bool) (advance int, token []byte, err error) {
+    header, content, found := bytes.Cut(data, []byte{'\r', '\n', '\r', '\n'})
+
+    if (found == false) {
+        return 0, nil, nil;
+    }
+
+    contentLengthBytes := header[len("Content-Length: "):]
+    contentLength, err := strconv.Atoi(string(contentLengthBytes));
+
+    if (err != nil) {
+        return 0, nil, err;
+    }
+
+    if (len(content) > contentLength) {
+        return 0, nil, nil;
+    }
+
+    // 4 for \r\n\r\n 
+    advanced := len(header) + 4  + contentLength
+    return advanced, data[:advanced], nil
 }
