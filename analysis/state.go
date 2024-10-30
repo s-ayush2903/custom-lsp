@@ -20,12 +20,14 @@ func NewState() State {
     }
 }
 
-func (state *State) OpenDocument(path string, contents string) {
+func (state *State) OpenDocument(logger *log.Logger, path string, contents string) [] lsp.Diagnostic {
     state.Documents[path] = contents
+    return getDiagnostics(logger, contents)
 }
 
-func (state *State) UpdateDocument(path string, contents string) {
+func (state *State) UpdateDocument(logger *log.Logger, path string, contents string) [] lsp.Diagnostic {
     state.Documents[path] = contents
+    return getDiagnostics(logger, contents)
 }
 
 func (state *State) Hover(id int, path string) lsp.HoverResponse {
@@ -124,6 +126,24 @@ func (state *State) Completion(logger *log.Logger, id int, filePath string) lsp.
     // logger.Printf("COMPLETION RESPONSE: %s", completions[0])
 
     return completionsResponse
+}
+
+func getDiagnostics(logger *log.Logger, contents string) [] lsp.Diagnostic {
+    diagnostics := [] lsp.Diagnostic{}
+    logger.Printf("DIAGNOSTIC content %s", contents)
+    for row, line := range strings.Split(contents, "\n") {
+        if strings.Contains(line, "VS Code") {
+            idx := strings.Index(line, "VS Code")
+            logger.Print("-------------FOUND FOUND FOUND-------------")
+            diagnostics = append(diagnostics, lsp.Diagnostic{
+                Range: LineRange(row, idx, idx + len("VS Code")),
+                Serverity: 1,
+                Source: "Elitism",
+                Message: "One should ALWAYS use superior editors ONLY",
+            })
+        }
+    }
+    return diagnostics
 }
 
 func LineRange (line, start, end int) lsp.Range {

@@ -30,9 +30,6 @@ type Kind struct {
     Refactor string
 }
 
-type Diagnostic struct {
-}
-
 type Command struct {
     Title string `json:"title"`
     Command string `json:"command"`

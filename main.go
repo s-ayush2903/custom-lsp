@@ -67,7 +67,18 @@ func handleMessage(logger *log.Logger, writer io.Writer, state analysis.State, m
             logger.Printf("[textdoc/didOpen]received contents cannot be parsed : %s %s", content,  err)
         }
         logger.Printf("[textdoc/didOpen] OPENED loaded file at: [ %s ]", request.DidOpenTextDocumentParams.TextDocumentItem.Uri)
-        state.OpenDocument(request.DidOpenTextDocumentParams.TextDocumentItem.Uri, request.DidOpenTextDocumentParams.TextDocumentItem.Text)
+
+		diagnostics := state.OpenDocument(logger, request.DidOpenTextDocumentParams.TextDocumentItem.Uri, request.DidOpenTextDocumentParams.TextDocumentItem.Text)
+		writeResponse(logger, lsp.PublishDiagnosticsNotification{
+			Notification: lsp.Notification{
+				RPC:    "2.0",
+				Method: "textDocument/publishDiagnostics",
+			},
+			Params: lsp.PublishDiagnosticParams{
+				URI:         request.DidOpenTextDocumentParams.TextDocumentItem.Uri,
+				Diagnostics: diagnostics,
+			},
+		}, writer)
 
     case "textDocument/didChange":
         var request lsp.DidChangeTextDocumentNotification
@@ -77,7 +88,19 @@ func handleMessage(logger *log.Logger, writer io.Writer, state analysis.State, m
         logger.Printf("[textdoc/didChange] UPDATED loaded file at: [ %s ]", request.Params.TextDocument.Uri)
 
         for _, change := range request.Params.Changes {
-            state.UpdateDocument(request.Params.TextDocument.Uri, change.Text)
+            diagnostics := state.UpdateDocument(logger, request.Params.TextDocument.Uri, change.Text)
+            writeResponse(logger, lsp.PublishDiagnosticsNotification{
+                    Notification: lsp.Notification{
+                        RPC: "2.0",
+                        Method: "textDocument/publishDiagnostics",
+                    },
+                    Params: lsp.PublishDiagnosticParams {
+                        URI: request.Params.TextDocument.Uri,
+                        Diagnostics: diagnostics,
+                    },
+                },
+            writer,
+            )
         }
 
     case "textDocument/hover":
