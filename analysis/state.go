@@ -2,6 +2,7 @@ package analysis
 
 import (
 	"fmt"
+	"log"
 	"lsp-go/lsp"
 	"strings"
 )
@@ -101,6 +102,28 @@ func (state *State) CodeAction(id int, filePath string) lsp.CodeActionResponse {
     }
 
     return codeActionResponse
+}
+
+func (state *State) Completion(logger *log.Logger, id int, filePath string) lsp.CompletionResponse {
+    completions := []lsp.CompletionItem{
+        {
+            Label: "sample trigger",
+            Detail: "This is the very default granular detail about this completion",
+            Documentation: "People rarely read documentation for theses pieces of codes, if you want it more then better search it over the internet",
+        },
+    }
+
+    completionsResponse := lsp.CompletionResponse{
+        Response: lsp.Response{
+            RPC: "2.0",
+            ID: &id,
+        },
+        Completions: completions,
+    }
+
+    // logger.Printf("COMPLETION RESPONSE: %s", completions[0])
+
+    return completionsResponse
 }
 
 func LineRange (line, start, end int) lsp.Range {
