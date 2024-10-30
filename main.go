@@ -99,6 +99,18 @@ func handleMessage(logger *log.Logger, writer io.Writer, state analysis.State, m
         // prepare resposne
         response := state.Definition(request.ID, request.Params.TextDocument.Uri, request.Params.Position)       // write it back to the stream
         writeResponse(logger, response, writer)
+
+    case "textDocument/codeAction":
+        var request lsp.DefinitionRequest
+        if err := json.Unmarshal(content, &request) ; err != nil {
+            logger.Printf("[textdoc/codeAction] received contents cannot be parsed : %s %s", content,  err)
+        }
+        logger.Printf("[textdoc/codeAction] CODE ACTION loaded file at: [ %s ]", request.Params.TextDocument.Uri)
+
+        // prepare resposne
+        response := state.CodeAction(request.ID, request.Params.TextDocument.Uri)       // write it back to the stream
+
+        writeResponse(logger, response, writer)
     }
 }
 

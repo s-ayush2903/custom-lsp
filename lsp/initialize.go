@@ -34,6 +34,7 @@ type ServerCapabilities struct {
     TextDocumentSyncKind int `json:"textDocumentSync"`
     HoverProivder bool `json:"hoverProvider"`
     DefinitionProvider bool `json:"definitionProvider"`
+    CodeActionProivder bool `json:"codeActionProvider"`
 }
 
 type ServerInfo struct {
@@ -52,6 +53,7 @@ func NewInitializeResponse(id int) InitializeResponse {
                 TextDocumentSyncKind: 1, // https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocumentSyncKind
                 HoverProivder: true,
                 DefinitionProvider: true,
+                CodeActionProivder: true,
             },
             ServerInfo: ServerInfo{
                 Name: "custom-lsp",

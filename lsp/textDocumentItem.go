@@ -53,3 +53,12 @@ type Range struct {
     Start Position `json:"start"`
     End Position `json:"end"`
 }
+
+type WorkspaceEdit struct {
+    Changes map[string][]TextEdit `json:"changes"`
+}
+
+type TextEdit struct {
+    Range `json:"range"`
+    NewText string `json:"newText"` // map of string to the list of edits that can be done there
+}
