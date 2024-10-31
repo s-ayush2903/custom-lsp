@@ -1,9 +1,9 @@
 # custom-lsp
-A custom LSP server written in 100% Go. It's purpose was learning about how LSP
+A custom LSP server written in **100% Go**. It's purpose was learning about how LSP
 servers actually work at a deeper level, gaining understanding and implementing
 a minimal version of it.
 
-Built with go version 1.22.1 on darwin/arm64, and tested on NEOVIM `v0.9.5`
+Built with **Go** version `1.22.1` on `darwin/arm64`, and tested on **NEOVIM** `v0.9.5`
 (Release) - [link](https://github.com/neovim/neovim/releases/tag/v0.9.5). Should
 work with other editors as well given proper config of lsp at the client end.
 A sample config used for testing this LSP server is linked [here](https://github.com/ayush-oyorooms/.dotfiles/blob/5a7ab2ba1c965cc1bc91de9a646a8a82d68976d1/nvim/.config/nvim/after/plugin/custom_lsp_server_test.lua)
@@ -19,7 +19,7 @@ dynamically tells the char count.
 
 * LSP Spec: [Hover](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_hover)
 * Invocation: `:lua vim.lsp.buf.hover()`
-* Demo:
+* Demo ([vimeo link](https://vimeo.com/1025079604)):
 <img src="./assets/hover.mov" width=700>
 
 ### 2. Go To Definition
@@ -30,7 +30,7 @@ above where the cursor is at the moment.
 
 * LSP Spec: [Go To Definition](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_definition)
 * Invocation: `:lua vim.lsp.buf.definition()`
-* Demo:
+* Demo ([vimeo link](https://vimeo.com/1025079987)):
 <img src="./assets/definition_jumps.mov" width=700>
 
 ### 3. Code Actions
@@ -42,7 +42,7 @@ quite seriously xD.
 
 * LSP Spec: [Code Actions](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_codeAction)
 * Invocation: `:lua vim.lsp.buf.code_action()` _or_ `:Telescope diagnostics`
-* Demo:
+* Demo ([vimeo link](https://vimeo.com/1025080272)):
 <img src="./assets/code_actions.mov" width=700>
 
 ### 4. Completions
@@ -51,7 +51,7 @@ provides a couple of suggestions based on typing.
 
 * LSP Spec: [Completion](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_completion)
 * Invocation: `:lua vim.lsp.buf.completion()`
-* Demo:
+* Demo ([vimeo link](https://vimeo.com/1025080542)):
 <img src="./assets/completions.mov" width=700>
 
 ### 5. Diagnostics (Notification)
@@ -61,5 +61,5 @@ section (usually). This implementation takes a few funny takes on editors.
 
 * LSP Spec: [Diagnostics](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_publishDiagnostics)
 * Invocation: `:lua vim.lsp.diagnostic.get_line_diagnostics()`  (these btw get generated in insert mode only)
-* Demo:
+* Demo ([vimeo link](https://vimeo.com/1025072536)):
 <img src="./assets/diagnostics.mov" width=700>
