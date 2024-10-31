@@ -6,7 +6,7 @@ type PublishDiagnosticsNotification struct {
 }
 
 type PublishDiagnosticParams struct {
-    URI string 
+    URI string  `json:"uri"`
     Diagnostics []Diagnostic `json:"diagnostics"`
 }
 
