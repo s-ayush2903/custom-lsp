@@ -113,6 +113,16 @@ func (state *State) Completion(logger *log.Logger, id int, filePath string) lsp.
             Detail: "This is the very default granular detail about this completion",
             Documentation: "People rarely read documentation for theses pieces of codes, if you want it more then better search it over the internet",
         },
+        {
+            Label: "suggestion for writing",
+            Detail: "This should be a good placeholder for you to fill space with",
+            Documentation: "It just is placeholder documentation",
+        },
+        {
+            Label: "very informative",
+            Detail: "least sounding",
+            Documentation: "finally this is going to end",
+        },
     }
 
     completionsResponse := lsp.CompletionResponse{
@@ -139,7 +149,17 @@ func getDiagnostics(logger *log.Logger, contents string) [] lsp.Diagnostic {
                 Range: LineRange(row, idx, idx + len("VS Code")),
                 Serverity: 1,
                 Source: "Elitism",
-                Message: "One should ALWAYS use superior editors ONLY",
+                Message: "One should ALWAYS use superior editors ONLY -.-",
+            })
+        }
+        if strings.Contains(line, "nvim") {
+            idx := strings.Index(line, "nvim")
+            logger.Print("-------------[nvim]FOUND FOUND FOUND-------------")
+            diagnostics = append(diagnostics, lsp.Diagnostic{
+                Range: LineRange(row, idx, idx + len("nvim")),
+                Serverity: 4,
+                Source: "Elitism",
+                Message: "nvim is an excellent and powerful editor. Good boi : )",
             })
         }
     }
